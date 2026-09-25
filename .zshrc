@@ -79,10 +79,10 @@ if [[ -f /usr/local/opt/fzf/shell/key-bindings.zsh ]]; then
 fi
 
 # Arch
-if [[ -f /usr/share/fzf/key-bindings.zsh ]]; then
-  source /usr/share/fzf/key-bindings.zsh
-  source /usr/share/fzf/completion.zsh
+if [[ -f /usr/share/fzf/shell/key-bindings.zsh ]]; then
+  source /usr/share/fzf/shell/key-bindings.zsh
 fi
+ 
 
 # Ubuntu
 if [[ -f /usr/share/doc/fzf/examples/key-bindings.zsh ]]; then
@@ -123,3 +123,20 @@ source "$ZDOTDIR/prompt.zsh"
 if [[ -f "$ZDOTDIR/local.zsh" ]]; then
   source "$ZDOTDIR/local.zsh"
 fi
+
+# =========================================================
+# Final fzf keybindings
+# =========================================================
+
+bindkey -M viins '^R' fzf-history-widget
+bindkey -M vicmd '^R' fzf-history-widget
+
+bindkey -M viins '^D' _fzf_directory_widget
+bindkey -M vicmd '^D' _fzf_directory_widget
+
+bindkey -M viins '^F' _fzf_file_widget
+bindkey -M vicmd '^F' _fzf_file_widget
+
+# Disable terminal EOF on Ctrl+D so Zsh can use Ctrl+D for fzf
+stty eof undef
+
